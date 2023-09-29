@@ -17,6 +17,8 @@ import {
   deleteUserFailure,
   signOut,
 } from '../redux/user/userSlice';
+import PrNav from './ProfileNav';
+import { Outlet } from 'react-router-dom';
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -108,7 +110,12 @@ export default function Profile() {
     }
   };
   return (
+    <>
+    <PrNav/>
+      <Outlet/>
+   
     <div className='p-3 max-w-lg mx-auto'>
+      
       <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
@@ -148,7 +155,7 @@ export default function Profile() {
           type='text'
           id='username'
           placeholder='Username'
-          className='bg-slate-100 rounded-lg p-3'
+          className='bg-slate-100 rounded-lg p-3 text-black'
           onChange={handleChange}
         />
         <input
@@ -156,26 +163,26 @@ export default function Profile() {
           type='email'
           id='email'
           placeholder='Email'
-          className='bg-slate-100 rounded-lg p-3'
+          className='bg-slate-100 rounded-lg p-3 text-black'
           onChange={handleChange}
         />
         <input
           type='password'
           id='password'
           placeholder='Password'
-          className='bg-slate-100 rounded-lg p-3'
+          className='bg-slate-100 rounded-lg p-3 text-black'
           onChange={handleChange}
         />
         <button className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>
           {loading ? 'Loading...' : 'Update'}
         </button>
       </form>
-      <div className='flex justify-between mt-5'>
+      <div className='flex justify-between mt-2'>
         <span
           onClick={handleDeleteAccount}
           className='text-red-700 cursor-pointer'
         >
-          Delete Account
+          Delete Account 
         </span>
         <span onClick={handleSignOut} className='text-red-700 cursor-pointer'>
           Sign out
@@ -186,5 +193,6 @@ export default function Profile() {
         {updateSuccess && 'User is updated successfully!'}
       </p>
     </div>
+    </>
   );
 }

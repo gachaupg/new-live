@@ -1,3 +1,160 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+  color: aliceblue;
+  background-color: rgb(63, 33, 63);
+}
+.home-main {
+  display: flex;
+  width: 100%;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 2rem;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+.home-left {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+}
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.home-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 12rem;
+}
+.home-right {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-right img {
+  height: 30rem;
+  width: 100%;
+}
+.video-card {
+    transition: all 0.3s ease;
+    
+  }
+  
+  .video-card.expanded {
+     /* Adjust the height as needed */
+  }
+.movies{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+ gap: 2rem;
+  width: 100%;
+  flex-direction: row; 
+  flex-wrap: wrap;
+}  
+.audio-players{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   gap: 2rem;
+    width: 100%;
+    flex-direction: row; 
+    flex-wrap: wrap; 
+}
+.audio-player{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   margin-top: 3rem;
+    flex-direction: column; 
+    margin-bottom: 1rem;
+    
+}
+.pricing{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+   margin-top: 3rem;
+    margin-bottom: 1rem;  
+    padding: 2rem;
+    gap: 3rem;
+    margin-top: 14rem;
+    flex-wrap: wrap;
+}
+.card-price{
+    width: 20%;
+    height: 12rem;
+    display: flex;
+    gap: 2rem;
+
+
+}
+.search{
+    width: 50rem;
+}
+.home-top-cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.home-top{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+   margin-top: 3rem;
+    margin-bottom: 1rem;  
+    padding: 2rem;
+    gap: 3rem;
+  
+    flex-wrap: wrap;
+}
+@media only screen and (max-width: 600px) {
+    .card-price{
+        width: 90%;
+
+    }
+    .search{
+        width: 100% !important;
+    }
+    .pricing{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+       margin-top: 3rem;
+        margin-bottom: 1rem;  
+        padding: 2rem;
+        gap: 3rem;
+        margin-top: 4rem !important;
+    }
+    .video-card {
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+      .home-left{
+        width: 100%;
+      }
+      .home-btns{
+        gap: 5rem;
+      }
+      .home-right{
+        width: 100%;
+      }
+  }

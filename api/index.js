@@ -19,10 +19,10 @@ const corsOptions = {
 mongoose
   .connect(process.env.DB_URI)
   .then(() => {
-    console.log('Server connected');
+    console.log('Server is connected');
 
   })
-  .catch((error) => console.log(`${error} did nots connect`));
+  .catch((error) => console.log(`${error} did not connect`));
 
 const __dirname = path.resolve();
 

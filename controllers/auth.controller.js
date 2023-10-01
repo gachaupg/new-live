@@ -2,18 +2,55 @@ import User from '../models/user.model.js';
 import bcryptjs from 'bcryptjs';
 import { errorHandler } from '../utils/error.js';
 import jwt from 'jsonwebtoken';
+import nodemailer from "nodemailer";
+import ejs from "ejs";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import path from "path";
+
+const transporter = nodemailer.createTransport({
+  host: process.env.SMPT_HOST,
+  port: process.env.SMPT_PORT,
+  service: "gmail",
+  auth: {
+    user: "worldofhustles@gmail.com",
+    pass: "tewcczqvepiskpbm",
+  },
+});
 
 export const signup = async (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, email: userEmail, password } = req.body;
   const hashedPassword = bcryptjs.hashSync(password, 10);
-  const newUser = new User({ username, email, password: hashedPassword });
+  const newUser = new User({ username, email: userEmail, password: hashedPassword });
+
   try {
+    const currentModuleURL = import.meta.url;
+    const currentModulePath = fileURLToPath(currentModuleURL);
+    const currentDir = dirname(currentModulePath);
+
+
+    // const templatePath = path.join(currentDir, "../mails", template);
+    // const html = await ejs.renderFile(templatePath, data);
+
+    var mailOptions = {
+      from: "worldofhustles@gmail.com",
+      to: userEmail,
+      subject: `Hello, welcome ${username} to Nwplus Tv. Click the link to login`,
+      html: '<a href="https://nwplustv.netlify.app/sign-in">Login Link</a>',
+    };
+    
+
+    await transporter.sendMail(mailOptions);
+    console.log(transporter);
     await newUser.save();
     res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
     next(error);
   }
 };
+
+
+
 
 export const signin = async (req, res, next) => {
   const { email, password } = req.body;
